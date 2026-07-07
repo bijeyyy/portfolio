@@ -57,7 +57,7 @@ export default function Navbar() {
                 </div>
 
                 {isOpen && (
-                    <div className="lg:hidden border-t border-gray-900 py-4">
+                    <div className="lg:hidden absolute left-0 right-0 top-full border-t border-gray-900 bg-background shadow-lg animate-in slide-in-from-top-2 fade-in duration-200 py-4 px-4 sm:px-8">
                         <nav className="flex flex-col gap-4">
                             {navLinks.map((link) => (
                                 <Link key={link.href} href={link.href} className="text-secondary" onClick={() => setIsOpen(false)}>

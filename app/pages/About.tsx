@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge"
 import { Minus, File } from "lucide-react";
 import { Button } from "@/components/ui/button"
+import FadeInSection from "@/components/FadeInSection"
 
 export default function About() {
     const title = "About"
@@ -49,18 +50,23 @@ export default function About() {
             <div className="flex min-h-screen px-6 sm:px-10 lg:pl-28 lg:pr-16 py-16 sm:py-20 lg:py-22 items-center">
                 <div className="grid gap-4 w-full">
 
+                    <FadeInSection delay={0}>
                     <div>
                         <span className="flex items-center gap-2 text-info font-mono text-xs sm:text-sm">
                             <Minus className="shrink-0" /> {TimeLine}
                         </span>
                     </div>
+                    </FadeInSection>
 
+                    <FadeInSection delay={0.1}>
                     <div>
                         <h1 className="text-3xl sm:text-4xl lg:text-5xl">
                             A quick introduction
                         </h1>
                     </div>
+                    </FadeInSection>
 
+                    <FadeInSection delay={0.2}>
                     <div className="w-full">
                         <Card size="sm" className="w-full max-w-none">
                             <CardHeader>
@@ -98,6 +104,7 @@ export default function About() {
                             </CardContent>
                         </Card>
                     </div>
+                    </FadeInSection>
 
                 </div>
             </div>

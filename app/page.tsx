@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Navbar, Hero, About, TechStack, Projects, Contact } from '@/app/pages'
+import { Navbar, Hero, About, TechStack, Projects, Contact, Footer } from '@/app/pages'
 import { Button } from "@/components/ui/button"
 
 
@@ -28,6 +28,8 @@ export default function Home() {
         <section id="contact">
           <Contact />
         </section>
+
+        <Footer />
     </>
   );
 }
