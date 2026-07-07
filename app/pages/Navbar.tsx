@@ -64,9 +64,11 @@ export default function Navbar() {
                                     {link.label}
                                 </Link>
                             ))}
+                            <Link href="#contact">
                             <Button className="h-10 w-full mt-2" onClick={() => setIsOpen(false)}>
                                 Hire me
                             </Button>
+                            </Link>
                         </nav>
                     </div>
                 )}
