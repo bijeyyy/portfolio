@@ -27,14 +27,14 @@ export default function About() {
     const aboutMe = (
         <>
             <span>
-                `I'm a full-stack developer with a focus on clean architecture and interfaces that feel effortless to use. I've spent
-                the last few year shipping products for startups and small teams - writing the frontend, the backend, and everything that
-                connects them`
+                I'm a frontend developer passionate about building modern, responsive, and user-friendly web
+                applications. I enjoy turning ideas into polished interfaces that provide a smooth experience 
+                across different devices.
             </span>
 
             <span>
-                I care about code that's easy for the next person to read, deadlines that are actually met, and clients who know exactly what's
-                happening at every stage of a project.
+                While frontend is my main focus, I also have hands-on experience integrating APIs, authentication,
+                and database in my projects, and I'm continuously expanding my backend knowledge as I grow as a deeloper.
             </span>
         </>
     )

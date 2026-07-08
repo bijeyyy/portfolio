@@ -18,9 +18,9 @@ export default function Hero() {
     )
 
     const description =
-        `I design and build fast, reliable web applications - from pixel-perfect
-    interfaces to APIs and database behind them. I partner with companies 
-    and founders who need someone who can own a feature end to end.`
+        `I enjoy turning ideas into modern web applications that are fast, responsive, and easy to use. While
+        my strength is frontend development, I also work with backend technologies such as APIs, authentication,
+        and databases to build completet web applications.`
 
     return (
         <>

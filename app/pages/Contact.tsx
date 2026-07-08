@@ -1,12 +1,13 @@
 "use client";
-import { useState } from "react";
-import { Minus, MessageCircleMore } from "lucide-react"
+import { useState, useEffect } from "react";
+import { Minus, MessageCircleMore, AlertCircle } from "lucide-react"
 import Link from "next/link"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
 import { p } from "motion/react-client";
 import FadeInSection from "@/components/FadeInSection"
 
@@ -22,6 +23,20 @@ export default function Contact() {
 
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
     const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+    const [showEmailAlert, setShowEmailAlert] = useState(false);
+
+    const isValidEmail = (value: string) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+        return emailRegex.test(value.trim());
+    }
+
+    // auto-hide the popup after a few seconds
+    useEffect(() => {
+        if (showEmailAlert) {
+            const timer = setTimeout(() => setShowEmailAlert(false), 4000);
+            return () => clearTimeout(timer);
+        }
+    }, [showEmailAlert]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -29,6 +44,12 @@ export default function Contact() {
 
     const handleSubmit = async () => {
         if (!formData.name || !formData.email || !formData.message) return;
+
+        if (!isValidEmail(formData.email)) {
+            setShowEmailAlert(true);
+            return;
+        }
+
         setStatus("sending");
 
         try {
@@ -50,6 +71,19 @@ export default function Contact() {
 
     return (
         <>
+            {/* top popup alert for invalid email */}
+            {showEmailAlert && (
+                <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] sm:w-100 animate-in fade-in slide-in-from-top-4 duration-300">
+                    <Alert variant="destructive">
+                        <AlertCircle className="size-4 text-danger" />
+                        <AlertTitle className="text-danger">Invalid email</AlertTitle>
+                        <AlertDescription>
+                            Please enter a valid email address before sending.
+                        </AlertDescription>
+                    </Alert>
+                </div>
+            )}
+
             <div className="flex min-h-screen px-4 sm:px-8 md:pl-16 lg:pl-28 py-12 md:py-22 items-center">
                 <div className="grid gap-4 w-full">
 
@@ -94,7 +128,7 @@ export default function Contact() {
 
                                             <div className="grid gap-4 mt-8 w-full">
                                                 <Label htmlFor="email" className="text-secondary font-mono">--email</Label>
-                                                <Input id="email" name="email" value={formData.email} onChange={handleChange} placeholder="you@company.com" className="p-6 placeholder:text-muted" />
+                                                <Input type="email" id="email" name="email" value={formData.email} onChange={handleChange} placeholder="you@company.com" className="p-6 placeholder:text-muted" />
                                             </div>
                                         </div>
 
