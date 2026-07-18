@@ -31,6 +31,19 @@ export default function Projects() {
             live: "https://vintage-photobooth-web.vercel.app/user_dashboard",
             featured: true,
         },
+        {
+            id: 3,
+            title: "BrainForge AI",
+            file: ".tsx",
+            description:
+            `An AI-powered study assistant that helps students learn through intelligent conversations,
+            reviewer generation, quizzes, flashcards, and personalized explanations.`,
+            image: "/public/logo.png",
+            technologies: ["Next.js", "Tailwind CSS", "Supabase"],
+            github: "https://github.com/bijeyyy/portfolio",
+            live: "https://brain-forge-web.vercel.app",
+            featured: true,
+        }
     ]
 
     return (
